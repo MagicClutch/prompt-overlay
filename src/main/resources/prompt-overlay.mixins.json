@@ -6,7 +6,8 @@
   "client": [
     "KeybindsMixin",
     "ResourcefulConfigParsingUtilsPatch",
-    "ResourcefulConfigPresetsSelectorPatch"
+    "ResourcefulConfigPresetsSelectorPatch",
+    "ResourcefulConfigDropdownItemPatch"
   ],
   "injectors": {
     "defaultRequire": 1
