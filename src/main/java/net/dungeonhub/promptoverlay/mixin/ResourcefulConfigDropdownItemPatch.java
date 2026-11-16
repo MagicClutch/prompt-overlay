@@ -1,5 +1,6 @@
 package net.dungeonhub.promptoverlay.mixin;
 
+import net.minecraft.client.gui.components.AbstractWidget;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
@@ -12,6 +13,7 @@ public class ResourcefulConfigDropdownItemPatch {
             index = 2
     )
     private int fixTextArea(int maxX) {
-        return maxX + 12;
+        AbstractWidget self = (AbstractWidget) (Object) this;
+        return self.getX() + self.getWidth() - 4;
     }
 }
