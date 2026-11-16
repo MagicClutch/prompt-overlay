@@ -47,6 +47,11 @@ object ScheduleHandler {
         launchStarfallMeetingPrompt()
     }
 
+    fun shutdown() {
+        supervisor.cancel()
+        dispatcher.close()
+    }
+
     private fun launchScheduledPrompt(timeUntil: () -> Duration, announceBefore: () -> Duration, featureToggle: () -> Boolean, overlayBuilder: (Duration) -> Overlay) {
         scheduler.launch {
             val timeToEvent = timeUntil()

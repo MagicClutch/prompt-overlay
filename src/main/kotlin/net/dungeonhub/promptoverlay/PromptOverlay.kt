@@ -15,6 +15,7 @@ import net.dungeonhub.promptoverlay.util.MessageUtil.sendMessage
 import net.fabricmc.api.ClientModInitializer
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback
 import net.fabricmc.fabric.api.client.command.v2.ClientCommands
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents
 import net.fabricmc.loader.api.FabricLoader
 import net.minecraft.client.Minecraft
 import net.minecraft.network.chat.Component
@@ -68,6 +69,10 @@ object PromptOverlay : ClientModInitializer, OverlayHandler {
                         return@executes 1
                     }
             )
+        }
+
+        ClientLifecycleEvents.CLIENT_STOPPING.register {
+            ScheduleHandler.shutdown()
         }
 
         KeyMappingService.init()
